@@ -2,16 +2,14 @@
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class LuckyController
+class LuckyController extends AbstractController
 {
-    public function number()
+    public function number(int $num = 0)
     {
-        $number = random_int(0, 100);
+        $number = random_int(0, $num);
 
-        return new Response(
-            '<html><body>Lucky number: ' . $number . '</body></html>'
-        );
+        return $this->render('lucky/index.html.twig', array('number' => $number));
     }
 }

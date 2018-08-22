@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <style>
+            .example-wrapper {
+                margin: 1em auto;
+                max-width: 800px;
+                width: 95%;
+                font: 18px/1.5 sans-serif;
+            }
+
+            .example-wrapper code {
+                background: #F5F5F5;
+                padding: 2px 6px;
+            }
+        </style>
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    <div class="example-wrapper">
+        Simple message:
+
+        <ol>
+        {% for message in messages %}
+            <li><a href="{{ url(message.url) }}">{{ message.message }}</a></li>
+        {% endfor %}
+        </ol>
+
+        <p>You can go to other urls:</p>
+
+        <ul>
+            <li><a href="{{ url('new_message') }}">Create new random message</a></li>
+            <li><a href="{{ url('delete_message') }}">Delete random message</a></li>
+            <li><a href="{{ url('product_index') }}" target="_blank">Products</a></li>
+            <li><a href="{{ url('hello_page') }}" target="_blank">Hello page</a></li>
+            <li><a href="{{ url('welcome') }}" target="_blank">Welcome page</a></li>
+        </ul>
+    </div>
+{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
 </html>

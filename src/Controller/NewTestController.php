@@ -31,7 +31,7 @@ class NewTestController extends Controller
      */
     public function index()
     {
-        return $this->render('base.html.twig', ['messages' => $this->messageRepo->findAll()]);
+        return $this->render('main.html.twig', ['messages' => $this->messageRepo->findAll()]);
     }
 
     /**
